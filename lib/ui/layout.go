@@ -42,28 +42,37 @@ func (e StickyAnchorEnum) String() string {
 	}[e]
 }
 
+type StickyBehavior struct {
+	Sticky bool
+	Anchor StickyAnchorEnum
+}
+
+type Padding struct {
+	Left, Top, Right, Bottom, TopLeft, BottomRight int
+}
+
 type Element struct {
-	context            *Element
-	elementType        ElementTypeEnum
-	anchorX, anchorY   int
-	width, height      int
-	paddingX, paddingY int
-	autoScale          bool
-	sticky             bool
-	children           []Element
-	theme              ElementColorPreset
-	stickyAnchor       StickyAnchorEnum
+	Context          *Element
+	ElementType      ElementTypeEnum
+	AnchorX, AnchorY int
+	Width, Height    int
+	Padding          Padding
+	AutoScale        bool
+	Sticky           StickyBehavior
+	Children         []Element
+	Theme            ElementColorPreset
+	visible          bool
 }
 
 func (el Element) AddElement(element Element) {
-	el.children = append(el.children, element)
+	el.Children = append(el.Children, element)
 }
 
-func autoScalingCalculation(el Element) (float32, float32) {
+func autoScalingCalculation(el *Element) (float32, float32) {
 	ww, wh := ebiten.WindowSize()
-	proportionX := ww / el.width
-	proportionY := wh / el.height
-	var actualWidth = proportionX * el.width
-	var actualHeight = proportionY * el.height
+	proportionX := ww / el.Width
+	proportionY := wh / el.Height
+	var actualWidth = proportionX * el.Width
+	var actualHeight = proportionY * el.Height
 	return float32(actualWidth), float32(actualHeight)
 }

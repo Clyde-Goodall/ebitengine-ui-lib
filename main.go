@@ -9,15 +9,16 @@ import (
 type Game struct{}
 
 var config lib.WindowConfig
-var ui lib.UI
+var UI lib.UI
 
 func (g *Game) Update() error {
 	return nil
 }
 
 func (g *Game) Draw(screen *ebiten.Image) {
-	err := ui.Draw(screen)
+	err := UI.DrawUI(screen)
 	if err != nil {
+		// fmt.Println(err)
 		return
 	}
 }
@@ -32,14 +33,15 @@ func main() {
 		Height: 600,
 	}
 	// ui initialization
-	ui, err := lib.InitUI(&ebiten.Image{}, config)
+	var err error
+	UI, err = lib.InitUI(nil, config)
 	if err != nil {
 		panic("unable to initialize UI")
 	}
-	ui.AddChild(lib.Element{
+	UI.AddChild(
 		lib.Container,
-	})
-	fmt.Print(ui)
+		lib.StickyBehavior{Sticky: true, Anchor: lib.TopLeft},
+	)
 
 	ebiten.SetWindowSize(config.Width, config.Height)
 	ebiten.SetWindowTitle("Test Window")
