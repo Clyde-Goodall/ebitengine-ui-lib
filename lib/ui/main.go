@@ -26,21 +26,16 @@ func InitUI(context *ebiten.Image, config WindowConfig) (UI, error) {
 	}, nil
 }
 
-func (ui *UI) append(old Element) {
-	ui.elementTree = append(ui.elementTree, Element{})
+func (ui *UI) AddChild(child Element) {
+	ui.elementTree = append(ui.elementTree, child)
 }
 
-func (el *Element) append(child Element) {
+func (el *Element) AddChild(child Element) {
 	el.children = append(el.children, child)
 }
 
 func (ui *UI) getScreenResizeInfo() (int, int) {
-	return 0, 0
-}
-
-func (ui *UI) Draw(screen *ebiten.Image) {
-	if ui.elementTree == nil {
-		return
-	}
-	
+	ww, wh := ebiten.WindowSize()
+	differenceX, differenceY := ui.windowConfig.Width-ww, ui.windowConfig.Height-wh
+	return differenceX, differenceY
 }
