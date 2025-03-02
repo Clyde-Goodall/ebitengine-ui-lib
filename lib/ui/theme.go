@@ -14,44 +14,44 @@ var Transparent = color.Color(color.RGBA{0, 0, 0, 0})
 // Theme preset examplesfor UI elements.
 // Currently aiming for the old Flipntoe Studio UI color palette, but will be made more agnostic later on.
 type ElementColorPreset struct {
-	borderColor     color.Color
-	backgroundColor color.Color
-	foregroundColor color.Color
+	BorderColor     color.Color
+	BackgroundColor color.Color
+	ForegroundColor color.Color
 	// focused/active colors
-	activeBorderColor     color.Color
-	activeBackgroundColor color.Color
-	activeForegroundColor color.Color
+	ActiveBorderColor     color.Color
+	ActiveBackgroundColor color.Color
+	ActiveForegroundColor color.Color
 }
 
 // currently making the default transparent.
 // Since UI element initialization alone don't  dictate the default sizing of the area on the screen,
 // it's not completely necessary to supply a background color/Theme struct on init and should instead be handled by ebitengine draw funcs.
 var DefaultContainerTheme = ElementColorPreset{
-	borderColor:     Transparent,
-	backgroundColor: Transparent,
-	foregroundColor: Black,
+	BorderColor:     LightGrey,
+	BackgroundColor: LightGrey,
+	ForegroundColor: Black,
 	// focused/active
-	activeBorderColor:     Transparent,
-	activeBackgroundColor: Transparent,
-	activeForegroundColor: Black,
+	ActiveBorderColor:     Transparent,
+	ActiveBackgroundColor: Transparent,
+	ActiveForegroundColor: Black,
 }
 
 var DefaultRoundedButtonTheme = ElementColorPreset{
-	borderColor:     Orange,
-	backgroundColor: LightOrange,
-	foregroundColor: Orange,
+	BorderColor:     Orange,
+	BackgroundColor: LightOrange,
+	ForegroundColor: Orange,
 	// focused/active
-	activeBorderColor:     Black,
-	activeBackgroundColor: Yellow,
-	activeForegroundColor: Black,
+	ActiveBorderColor:     Black,
+	ActiveBackgroundColor: Yellow,
+	ActiveForegroundColor: Black,
 }
 
 var DefaultButtonTheme = ElementColorPreset{
-	borderColor:     LightOrange,
-	backgroundColor: OffWhite,
-	foregroundColor: LightOrange,
+	BorderColor:     LightOrange,
+	BackgroundColor: OffWhite,
+	ForegroundColor: LightOrange,
 	// focused/active
-	activeBorderColor:     Orange,
-	activeBackgroundColor: OffWhite,
-	activeForegroundColor: Orange,
+	ActiveBorderColor:     Orange,
+	ActiveBackgroundColor: OffWhite,
+	ActiveForegroundColor: Orange,
 }
