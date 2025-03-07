@@ -59,7 +59,7 @@ func (ui *UI) DrawContainer(el *Element) {
 	if el.AutoScale && !el.Sticky.Sticky {
 		actualWidth, actualHeight = autoScalingCalculation(el)
 	}
-	x, y := el.AnchorX, el.AnchorY
+	// x, y := el.AnchorX, el.AnchorY
 	if el.Sticky.Sticky { // no need to check for autoScale, as it should override autoScale
 		switch el.Sticky.Anchor { // anchor anchorX, anchorY, width, height to whatever corner it's sticking to.
 		case TopLeft: // technically, top left wouldn't matter since x,y should already be relative to the window's position
@@ -74,6 +74,8 @@ func (ui *UI) DrawContainer(el *Element) {
 			break
 		}
 	}
+	
+	// check bounds of element size compared to position and window size here
 
 	vector.DrawFilledRect(
 		ui.Context,

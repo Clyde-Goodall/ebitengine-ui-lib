@@ -6,10 +6,10 @@ import (
 )
 
 type ElementSizing struct {
-	padding int
-	width   int
-	height  int
-	pack    bool
+	Padding int
+	Width   int
+	Height  int
+	Pack    bool
 }
 
 func (ui *UI) Poll() {

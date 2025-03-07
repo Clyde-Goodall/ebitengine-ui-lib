@@ -51,6 +51,10 @@ type Padding struct {
 	Left, Top, Right, Bottom, TopLeft, BottomRight int
 }
 
+type Anchor struct {
+	X, Y int
+}
+
 type Element struct {
 	Context          *Element
 	ElementType      ElementTypeEnum
@@ -62,6 +66,7 @@ type Element struct {
 	Children         []Element
 	Theme            ElementColorPreset
 	visible          bool
+	Id               string
 }
 
 func (el Element) AddElement(element Element) {

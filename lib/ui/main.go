@@ -27,15 +27,18 @@ func InitUI(context *ebiten.Image, config WindowConfig) (UI, error) {
 	}, nil
 }
 
-func (ui *UI) AddChild(elType ElementTypeEnum, sticky StickyBehavior) {
-	el := Element{
+func (ui *UI) AddChild(elType ElementTypeEnum, sticky StickyBehavior, anchor Anchor, sizing ElementSizing, id string) {
+	el := Element{ // still need a method of positioning elements based on parent container position
 		ElementType: elType,
-		AnchorX:     0,
-		AnchorY:     0,
-		Width:       100,
-		Height:      500,
-		Sticky:      sticky,
-		visible:     true,
+		AnchorX:     anchor.X,
+		AnchorY:     anchor.Y,
+		Width:       sizing.Width,
+		Height:      sizing.Height,
+		// Padding
+		// Packed
+		Sticky:  sticky,
+		visible: true,
+		Id:      id,
 	}
 	fmt.Println("Added element to tree")
 	ui.ElementTree = append(ui.ElementTree, el)

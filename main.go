@@ -40,7 +40,18 @@ func main() {
 	}
 	UI.AddChild(
 		lib.Container,
-		lib.StickyBehavior{Sticky: true, Anchor: lib.TopLeft},
+		lib.StickyBehavior{
+			Sticky: true,
+			Anchor: lib.TopLeft,
+		},
+		lib.Anchor{0, 0},
+		lib.ElementSizing{
+			0,
+			300,
+			300,
+			false,
+		},
+		"root",
 	)
 
 	ebiten.SetWindowSize(config.Width, config.Height)
